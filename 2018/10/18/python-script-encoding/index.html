@@ -115,23 +115,25 @@
 
 
 
-  <meta name="description" content="小小的一方天地，不是一方通行的一方">
-<meta property="og:type" content="website">
-<meta property="og:title" content="JLoeve的个人博客">
-<meta property="og:url" content="https://lonelysteve.github.io/tags/原创/index.html">
+  <meta name="description" content="这几天又折腾电脑，很多东西都又重装了一遍（我为啥要说又。。。），为了学习Cocos2dx，我装上了Python2，但是我电脑上本来就有Python3，处理共存问题倒是问题不大，但是当我用上Python2之后，才发现Py2有多坑，它默认对Py脚本的编码是ASCII，即使你处理好这个问题，仍然可能会遇到打印中文出乱码的情况，对此我上网找了很多资料，总算是找到个比较全面的解决方案。">
+<meta name="keywords" content="Python,转载,编码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 输出中文乱码问题">
+<meta property="og:url" content="https://lonelysteve.github.io/2018/10/18/python-script-encoding/index.html">
 <meta property="og:site_name" content="JLoeve的个人博客">
-<meta property="og:description" content="小小的一方天地，不是一方通行的一方">
+<meta property="og:description" content="这几天又折腾电脑，很多东西都又重装了一遍（我为啥要说又。。。），为了学习Cocos2dx，我装上了Python2，但是我电脑上本来就有Python3，处理共存问题倒是问题不大，但是当我用上Python2之后，才发现Py2有多坑，它默认对Py脚本的编码是ASCII，即使你处理好这个问题，仍然可能会遇到打印中文出乱码的情况，对此我上网找了很多资料，总算是找到个比较全面的解决方案。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-10-18T06:52:25.253Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JLoeve的个人博客">
-<meta name="twitter:description" content="小小的一方天地，不是一方通行的一方">
+<meta name="twitter:title" content="Python 输出中文乱码问题">
+<meta name="twitter:description" content="这几天又折腾电脑，很多东西都又重装了一遍（我为啥要说又。。。），为了学习Cocos2dx，我装上了Python2，但是我电脑上本来就有Python3，处理共存问题倒是问题不大，但是当我用上Python2之后，才发现Py2有多坑，它默认对Py脚本的编码是ASCII，即使你处理好这个问题，仍然可能会遇到打印中文出乱码的情况，对此我上网找了很多资料，总算是找到个比较全面的解决方案。">
 
 
 
 
 
 
-  <link rel="canonical" href="https://lonelysteve.github.io/tags/原创/"/>
+  <link rel="canonical" href="https://lonelysteve.github.io/2018/10/18/python-script-encoding/"/>
 
 
 
@@ -141,7 +143,7 @@
   };
 </script>
 
-  <title>标签: 原创 | JLoeve的个人博客</title>
+  <title>Python 输出中文乱码问题 | JLoeve的个人博客</title>
   
 
 
@@ -188,7 +190,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -237,7 +239,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
     <a href="/tags/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
   </li>
@@ -289,162 +291,192 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block tag">
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>原创<small>标签</small>
-        </h1>
-      </div>
-
-      
-        
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lonelysteve.github.io/2018/10/18/python-script-encoding/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JLoeve">
+      <meta itemprop="description" content="小小的一方天地，不是一方通行的一方">
+      <meta itemprop="image" content="/logo.svg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JLoeve的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/07/29/2018-07-29-Requests-toolbelt/" itemprop="url">
-              
-                <span itemprop="name">有关 Requests 库中多部分编码(Multipart-Encoded) 自定义 boundary 问题</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Python 输出中文乱码问题
+              
+            
+          </h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-07-29T00:00:00+08:00"
-              content="2018-07-29" >
-          07-29
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
 
-    </header>
-  </article>
+            
+            
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-10-18 14:15:39 / 修改时间：14:52:25" itemprop="dateCreated datePublished" datetime="2018-10-18T14:15:39+08:00">2018-10-18</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/07/28/2018-07-28-China-telecom-e-pon-robooter/" itemprop="url">
-              
-                <span itemprop="name">使用Python程序令光猫重启</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-07-28T00:00:00+08:00"
-              content="2018-07-28" >
-          07-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/07/24/2018-07-24-CSharp-GDI-plus-about-capcha/" itemprop="url">
-              
-                <span itemprop="name">C#中GDI+的应用之验证码的生成</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-07-24T10:00:00+08:00"
-              content="2018-07-24" >
-          07-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/07/24/2018-07-24-CSharp-cross-threading-security-controls/" itemprop="url">
-              
-                <span itemprop="name">C#中跨线程安全操控控件</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-07-24T10:00:00+08:00"
-              content="2018-07-24" >
-          07-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <blockquote>
+<p>这几天又折腾电脑，很多东西都又重装了一遍（我为啥要说又。。。），为了学习Cocos2dx，我装上了Python2，但是我电脑上本来就有Python3，处理共存问题倒是问题不大，但是当我用上Python2之后，才发现Py2有多坑，它默认对Py脚本的编码是ASCII，即使你处理好这个问题，仍然可能会遇到打印中文出乱码的情况，对此我上网找了很多资料，总算是找到个比较全面的解决方案。</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><h2 id="增加系统全局变量"><a href="#增加系统全局变量" class="headerlink" title="增加系统全局变量"></a>增加系统全局变量</h2><p>以 windows 系统为例，添加系统变量：</p>
+<p>PYTHONIOENCODING=UTF8</p>
+<h2 id="修改-VSC-配置文件"><a href="#修改-VSC-配置文件" class="headerlink" title="修改 VSC 配置文件"></a>修改 VSC 配置文件</h2><p><em>VSC 即 Visual Studio Code 的缩写</em></p>
+<p>F1 键调出控制台，输入task,选择任务：配置任务运行程序,打开tasks.json文件，增加以下信息：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    "options": &#123;</span><br><span class="line">    "env":&#123;</span><br><span class="line">    "PYTHONIOENCODING": "UTF-8"</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="在代码里更改编码"><a href="#在代码里更改编码" class="headerlink" title="在代码里更改编码"></a>在代码里更改编码</h2><p>在每个需要中文的 python 文件中添加如下代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> io</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="comment">#改变标准输出的默认编码</span></span><br><span class="line">sys.stdout=io.TextIOWrapper(sys.stdout.buffer,encoding=<span class="string">'utf8'</span>)</span><br></pre></td></tr></table></figure>
+<p>使用方法1和方法2需要重启 VSC。<br>方法1可以一劳永逸。</p>
+<blockquote>
+<p>原作者：木公木<br>链接：<a href="https://www.jianshu.com/p/615c5aafeb41" target="_blank" rel="noopener">https://www.jianshu.com/p/615c5aafeb41</a></p>
+</blockquote>
+<p><em>非商业用途，侵权必删 QAQ</em></p>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/转载/" rel="tag"># 转载</a>
+          
+            <a href="/tags/编码/" rel="tag"># 编码</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/29/2018-07-29-Requests-toolbelt/" rel="next" title="有关 Requests 库中多部分编码(Multipart-Encoded) 自定义 boundary 问题">
+                <i class="fa fa-chevron-left"></i> 有关 Requests 库中多部分编码(Multipart-Encoded) 自定义 boundary 问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -465,8 +497,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -566,6 +607,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#解决方法"><span class="nav-number">1.</span> <span class="nav-text">解决方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#增加系统全局变量"><span class="nav-number">1.1.</span> <span class="nav-text">增加系统全局变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改-VSC-配置文件"><span class="nav-number">1.2.</span> <span class="nav-text">修改 VSC 配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在代码里更改编码"><span class="nav-number">1.3.</span> <span class="nav-text">在代码里更改编码</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -705,6 +762,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
 
   
 
