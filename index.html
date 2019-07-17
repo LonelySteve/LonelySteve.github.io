@@ -349,9 +349,13 @@
                 
               
 
-              <time title="创建时间：2019-07-17 12:35:15" itemprop="dateCreated datePublished" datetime="2019-07-17T12:35:15+08:00">2019-07-17</time>
+              <time title="创建时间：2019-07-17 12:35:15 / 修改时间：12:42:34" itemprop="dateCreated datePublished" datetime="2019-07-17T12:35:15+08:00">2019-07-17</time>
             
 
+            
+              
+
+              
             
           </span>
 
@@ -384,30 +388,15 @@
 
       
         
-          
-            <h1 id="如何使用Transmission"><a href="#如何使用Transmission" class="headerlink" title="如何使用Transmission"></a>如何使用Transmission</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><a href="https://transmissionbt.com/" title="Transmission官方网站" target="_blank" rel="noopener">Transmission</a> 是一个跨平台 BitTorrent 客户端，特点是一个跨平台的后端以及其上构建的简洁明了的用户界面。Transmission使用MIT和GNU双许可证授权，是一款自由软件。</p>
+          <h1 id="如何使用Transmission"><a href="#如何使用Transmission" class="headerlink" title="如何使用Transmission"></a>如何使用Transmission</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><a href="https://transmissionbt.com/" title="Transmission官方网站" target="_blank" rel="noopener">Transmission</a> 是一个跨平台 BitTorrent 客户端，特点是一个跨平台的后端以及其上构建的简洁明了的用户界面。Transmission使用MIT和GNU双许可证授权，是一款自由软件。</p>
 <p><a href="https://transmissionbt.com/" title="Transmission官方网站" target="_blank" rel="noopener">Transmission</a> 在Windows平台上的图形化用户界面使用QT构建，而在其他Unix/Linux平台上，使用更多的是它的WebUI，但是原生的WebUI简陋且缺乏语言支持，这里推荐使用第三方的<a href="https://github.com/ronggang/transmission-web-control" target="_blank" rel="noopener">transmission-web-control</a>代替官方的WebUI。</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>首先前往官网<a href="https://transmissionbt.com/download/" target="_blank" rel="noopener">Transmission</a>下载相应平台的相应版本</p>
-<h3 id="Windows平台"><a href="#Windows平台" class="headerlink" title="Windows平台"></a>Windows平台</h3><p>和使用msi安装普通软件无异，直接狂点下一步就行了（当然是你不介意将软件装在C盘的前提下）</p>
-<h3 id="Unix-Linux平台"><a href="#Unix-Linux平台" class="headerlink" title="Unix/Linux平台"></a>Unix/Linux平台</h3><p>由于我服务器使用操作系统是Ubuntu，下面的步骤仅供参考，其他类Linux系统或有不同：</p>
-<p>使用apt安装transmission-daemon：</p>
-<p><code>$ sudo apt-get install transmission-daemon</code></p>
-<p>编辑配置文件：</p>
-<p><code>$ vim /etc/transmission-daemon/settings.json</code></p>
-<p>修改以下配置项：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&quot;rpc-password&quot;: &quot;&lt;设置密码&gt;&quot;,</span><br><span class="line">&quot;rpc-username&quot;: &quot;transmission&quot;,</span><br><span class="line">&quot;rpc-whitelist&quot;: &quot;10.0.0.*&quot;,</span><br><span class="line">&quot;rpc-whitelist-enabled&quot;: true,</span><br></pre></td></tr></table></figure>
-<p>需要注意的是 <code>rpc-whitelist</code> 项要符合自己的局域网 IP 段，如果从外网访问则需设置为外网IP 段，若不清楚也可直接将 <code>rpc-whitelist-enabled</code> 设置为 <code>false</code> 来禁用白名单。</p>
-<p>配置保存后重载 transmission-daemon 服务：</p>
-<p><code>$ sudo systemctl reload transmission-daemon.service</code></p>
-<p>现在应该就可以通过浏览器访问 <code>&lt;服务器地址&gt;:9091</code> 来访问 web 控制台。</p>
-<p>此外，推荐安装第三方的<a href="https://github.com/ronggang/transmission-web-control" target="_blank" rel="noopener">transmission-web-control</a>代替官方的WebUI，此步骤是可选的。</p>
-<h2 id="已知问题"><a href="#已知问题" class="headerlink" title="已知问题"></a>已知问题</h2><p>按此流程安装后会出现每次重启后无法正常连接的问题，需要重启服务：</p>
-<p><code>$ sudo systemctl restart transmission-daemon.service</code></p>
-<blockquote>
-<p>本篇文章引用自<a href="https://wiki.momok.xyz/server:transmission" target="_blank" rel="noopener">https://wiki.momok.xyz/server:transmission</a>，有删改</p>
-</blockquote>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/17/how-to-use-transmission/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
