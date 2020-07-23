@@ -32,7 +32,7 @@
 <meta property="og:site_name" content="JLoeve 的个人博客">
 <meta property="og:description" content="这几天又折腾电脑，很多东西都又重装了一遍（我为啥要说又。。。），为了学习Cocos2dx，我装上了Python2，但是我电脑上本来就有Python3，处理共存问题倒是问题不大，但是当我用上Python2之后，才发现Py2有多坑，它默认对Py脚本的编码是ASCII，即使你处理好这个问题，仍然可能会遇到打印中文出乱码的情况，对此我上网找了很多资料，总算是找到个比较全面的解决方案。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-07-23T06:36:35.535Z">
+<meta property="og:updated_time" content="2020-07-23T06:50:30.091Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python 输出中文乱码问题">
 <meta name="twitter:description" content="这几天又折腾电脑，很多东西都又重装了一遍（我为啥要说又。。。），为了学习Cocos2dx，我装上了Python2，但是我电脑上本来就有Python3，处理共存问题倒是问题不大，但是当我用上Python2之后，才发现Py2有多坑，它默认对Py脚本的编码是ASCII，即使你处理好这个问题，仍然可能会遇到打印中文出乱码的情况，对此我上网找了很多资料，总算是找到个比较全面的解决方案。">
@@ -197,7 +197,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-23 06:36:35" itemprop="dateModified" datetime="2020-07-23T06:36:35+00:00">2020-07-23</time>
+                <time title="修改时间：2020-07-23 06:50:30" itemprop="dateModified" datetime="2020-07-23T06:50:30+00:00">2020-07-23</time>
               </span>
 
           
@@ -231,9 +231,8 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> io</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="comment">#改变标准输出的默认编码</span></span><br><span class="line">sys.stdout=io.TextIOWrapper(sys.stdout.buffer,encoding=<span class="string">'utf8'</span>)</span><br></pre></td></tr></table></figure>
 <p>使用方法1和方法2需要重启 VSC。<br>方法1可以一劳永逸。</p>
 <blockquote>
-<p>原作者：木公木<br>链接：<a href="https://www.jianshu.com/p/615c5aafeb41" target="_blank" rel="noopener">https://www.jianshu.com/p/615c5aafeb41</a></p>
+<p>原作者：木公木<br>原链接：<a href="https://www.jianshu.com/p/615c5aafeb41" target="_blank" rel="noopener">https://www.jianshu.com/p/615c5aafeb41</a><br><em>本文章属于转载文章，不遵守下方声明的版权协议</em>  </p>
 </blockquote>
-<p><em>非商业用途，侵权必删 QAQ</em></p>
 
     </div>
 
