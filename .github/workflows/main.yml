@@ -38,6 +38,8 @@ jobs:
       id: deploy
       uses: sma11black/hexo-action@v1.0.2
       with:
+        user_name: LonelySteve
+        user_email: jianglufull@foxmail.com
         # The deploy key for Github Pages repo
         deploy_key: ${{ secrets.DEPLOY_KEY }}
         # Git commit messages to your GitHub Pages repository.
