@@ -1080,4 +1080,6 @@ theme_config:
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
  type: git
- repo: https://github.com/LonelySteve/LonelySteve.github.io
+ # https://github.com/sma11black/hexo-action/issues/5#issuecomment-641344959
+ repo: git@github.com:LonelySteve/LonelySteve.github.io.git
+ 
