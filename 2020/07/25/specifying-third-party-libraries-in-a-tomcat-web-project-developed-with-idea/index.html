@@ -24,32 +24,33 @@
     var CONFIG = {"hostname":"blog.jloeve.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"这里有关「${query}」的知识空空如也~","hits_stats":"在 ${time} ms 里找到了 ${hits} 个结果"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="偶尔更新，长期咕咕~">
-<meta name="keywords" content="计算机, Python, Java, C#">
-<meta property="og:type" content="website">
-<meta property="og:title" content="JLoeve 的个人博客">
-<meta property="og:url" content="https://blog.jloeve.top/index.html">
+  <meta name="description" content="在学习 tomcat 开发 Web 项目的过程中，有时需要引入第三方库来简化某些操作，避免自己重复造轮子。和一般的 java 项目引入第三方库的步骤有所不同，如果仅仅只在项目中通过 idea 的 Project Structures 中的 Modules Dependencies 或者 Libraries 引入第三方库是不够的。因为还需要在部署的时候带上依赖才能正常运行。 环境 IDEA 201">
+<meta name="keywords" content="原创,tomcat,idea,java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在使用 idea 开发的 tomcat Web 项目中指定第三方库">
+<meta property="og:url" content="https://blog.jloeve.top/2020/07/25/specifying-third-party-libraries-in-a-tomcat-web-project-developed-with-idea/index.html">
 <meta property="og:site_name" content="JLoeve 的个人博客">
-<meta property="og:description" content="偶尔更新，长期咕咕~">
+<meta property="og:description" content="在学习 tomcat 开发 Web 项目的过程中，有时需要引入第三方库来简化某些操作，避免自己重复造轮子。和一般的 java 项目引入第三方库的步骤有所不同，如果仅仅只在项目中通过 idea 的 Project Structures 中的 Modules Dependencies 或者 Libraries 引入第三方库是不够的。因为还需要在部署的时候带上依赖才能正常运行。 环境 IDEA 201">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-07-25T15:28:02.102Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JLoeve 的个人博客">
-<meta name="twitter:description" content="偶尔更新，长期咕咕~">
+<meta name="twitter:title" content="在使用 idea 开发的 tomcat Web 项目中指定第三方库">
+<meta name="twitter:description" content="在学习 tomcat 开发 Web 项目的过程中，有时需要引入第三方库来简化某些操作，避免自己重复造轮子。和一般的 java 项目引入第三方库的步骤有所不同，如果仅仅只在项目中通过 idea 的 Project Structures 中的 Modules Dependencies 或者 Libraries 引入第三方库是不够的。因为还需要在部署的时候带上依赖才能正常运行。 环境 IDEA 201">
 
-<link rel="canonical" href="https://blog.jloeve.top/">
+<link rel="canonical" href="https://blog.jloeve.top/2020/07/25/specifying-third-party-libraries-in-a-tomcat-web-project-developed-with-idea/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>JLoeve 的个人博客</title>
+  <title>在使用 idea 开发的 tomcat Web 项目中指定第三方库 | JLoeve 的个人博客</title>
   
 
 
@@ -159,9 +160,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -177,10 +179,9 @@
       <meta itemprop="name" content="JLoeve 的个人博客">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/25/specifying-third-party-libraries-in-a-tomcat-web-project-developed-with-idea/" class="post-title-link" itemprop="url">在使用 idea 开发的 tomcat Web 项目中指定第三方库</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          在使用 idea 开发的 tomcat Web 项目中指定第三方库
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -194,6 +195,13 @@
             </span>
 
           
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
 
         </div>
       </header>
@@ -204,7 +212,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <a id="more"></a>
+        <a id="more"></a>
 <p>在学习 tomcat 开发 Web 项目的过程中，有时需要引入第三方库来简化某些操作，避免自己重复造轮子。和一般的 java 项目引入第三方库的步骤有所不同，如果仅仅只在项目中通过 idea 的 Project Structures 中的 Modules Dependencies 或者 Libraries 引入第三方库是不够的。因为还需要在部署的时候带上依赖才能正常运行。</p>
 <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul>
 <li>IDEA 2019.3</li>
@@ -282,464 +290,60 @@
 <li><a href="https://zhuanlan.zhihu.com/p/79932848" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/79932848</a></li>
 </ul>
 
-      
     </div>
 
     
     
     
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.jloeve.top/2018/10/18/python-script-encoding/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JLoeve">
-      <meta itemprop="description" content="偶尔更新，长期咕咕~">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JLoeve 的个人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/10/18/python-script-encoding/" class="post-title-link" itemprop="url">Python 输出中文乱码问题</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-10-18 14:15:39" itemprop="dateCreated datePublished" datetime="2018-10-18T14:15:39+00:00">2018-10-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-25 15:28:02" itemprop="dateModified" datetime="2020-07-25T15:28:02+00:00">2020-07-25</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>这几天又折腾电脑，很多东西都又重装了一遍（我为啥要说又。。。），为了学习Cocos2dx，我装上了Python2，但是我电脑上本来就有Python3，处理共存问题倒是问题不大，但是当我用上Python2之后，才发现Py2有多坑，它默认对Py脚本的编码是ASCII，即使你处理好这个问题，仍然可能会遇到打印中文出乱码的情况，对此我上网找了很多资料，总算是找到个比较全面的解决方案。</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2018/10/18/python-script-encoding/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>JLoeve
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://blog.jloeve.top/2020/07/25/specifying-third-party-libraries-in-a-tomcat-web-project-developed-with-idea/" title="在使用 idea 开发的 tomcat Web 项目中指定第三方库">https://blog.jloeve.top/2020/07/25/specifying-third-party-libraries-in-a-tomcat-web-project-developed-with-idea/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/原创/" rel="tag"># 原创</a>
+              <a href="/tags/tomcat/" rel="tag"># tomcat</a>
+              <a href="/tags/idea/" rel="tag"># idea</a>
+              <a href="/tags/java/" rel="tag"># java</a>
+          </div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.jloeve.top/2018/07/29/2018-07-29-Requests-toolbelt/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JLoeve">
-      <meta itemprop="description" content="偶尔更新，长期咕咕~">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JLoeve 的个人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/07/29/2018-07-29-Requests-toolbelt/" class="post-title-link" itemprop="url">有关 Requests 库中多部分编码(Multipart-Encoded) 自定义 boundary 问题</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-07-29 00:00:00" itemprop="dateCreated datePublished" datetime="2018-07-29T00:00:00+00:00">2018-07-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-25 15:28:02" itemprop="dateModified" datetime="2020-07-25T15:28:02+00:00">2020-07-25</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这个问题其实在使用HTTP库时很少能碰到，一般人也没有这种需求，但是出于某些原因，较真的我在这里折腾了几个小时，一开始我没想到是 Requests 本身的问题，后来，我把它的源码给翻了出来：</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2018/07/29/2018-07-29-Requests-toolbelt/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.jloeve.top/2018/07/28/2018-07-28-China-telecom-e-pon-robooter/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JLoeve">
-      <meta itemprop="description" content="偶尔更新，长期咕咕~">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JLoeve 的个人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/07/28/2018-07-28-China-telecom-e-pon-robooter/" class="post-title-link" itemprop="url">使用Python程序令光猫重启</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-07-28 00:00:00" itemprop="dateCreated datePublished" datetime="2018-07-28T00:00:00+00:00">2018-07-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-25 15:28:02" itemprop="dateModified" datetime="2020-07-25T15:28:02+00:00">2020-07-25</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>“光猫”是光调制解调器（Optical modem）的简称，“光猫”也称为单端口光端机，是针对特殊用户环境而研发的一种三件一套的光纤传输设备。该设备采用大规模集成芯片，电路简单，功耗低，可靠性高，具有完整的告警状态指示和完善的网管功能。我们可以使用简单的Python程序令光猫按我们的需要进行重启。</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2018/07/28/2018-07-28-China-telecom-e-pon-robooter/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/10/18/python-script-encoding/" rel="prev" title="Python 输出中文乱码问题">
+      <i class="fa fa-chevron-left"></i> Python 输出中文乱码问题
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.jloeve.top/2018/07/24/2018-07-24-CSharp-GDI-plus-about-capcha/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JLoeve">
-      <meta itemprop="description" content="偶尔更新，长期咕咕~">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JLoeve 的个人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/07/24/2018-07-24-CSharp-GDI-plus-about-capcha/" class="post-title-link" itemprop="url">C#中GDI+的应用之验证码的生成</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-07-24 10:00:00" itemprop="dateCreated datePublished" datetime="2018-07-24T10:00:00+00:00">2018-07-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-25 15:28:02" itemprop="dateModified" datetime="2020-07-25T15:28:02+00:00">2020-07-25</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我突然发现今天正好是我在微博发技术文章的一周年，这大概就是缘吧</p>
-<img data-src="/2018/07/24/2018-07-24-CSharp-GDI-plus-about-capcha/JLoeve_2018-07-24_19-14-27.png" title="微博截图">
-<p>甚至我截这个图的时候的时间正好是一年前这个微博的发送时间 (⊙o⊙)？</p>
-<p>由于是技术博客，于是就不多扯淡了，另外我还会挑几篇我认为有价值的技术向微博转载到我的博客中</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2018/07/24/2018-07-24-CSharp-GDI-plus-about-capcha/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.jloeve.top/2018/07/24/2018-07-24-CSharp-cross-threading-security-controls/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JLoeve">
-      <meta itemprop="description" content="偶尔更新，长期咕咕~">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JLoeve 的个人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/07/24/2018-07-24-CSharp-cross-threading-security-controls/" class="post-title-link" itemprop="url">C#中跨线程安全操控控件</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-07-24 10:00:00" itemprop="dateCreated datePublished" datetime="2018-07-24T10:00:00+00:00">2018-07-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-25 15:28:02" itemprop="dateModified" datetime="2020-07-25T15:28:02+00:00">2020-07-25</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>在C#的多线程编程中，如果产生“线程间操作无效：从不是创建控件XXXX的线程访问它”的异常，那是因为默认情况下，在Windows应用程序中，.NET Framework不允许在一个线程中直接操作另一个线程中的控件(因为访问Windows窗体控件本质上不是线程安全的)。微软为了线程安全，窗体上的控件只能通过创建控件的线程来操作控件的数据，也就是只能是UI线程来操作窗体上的控件！</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2018/07/24/2018-07-24-CSharp-cross-threading-security-controls/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.jloeve.top/2018/07/24/2018-07-24-introducing-my-blog/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JLoeve">
-      <meta itemprop="description" content="偶尔更新，长期咕咕~">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JLoeve 的个人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/07/24/2018-07-24-introducing-my-blog/" class="post-title-link" itemprop="url">欢迎来到我的第一篇博客</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-07-24 08:00:00" itemprop="dateCreated datePublished" datetime="2018-07-24T08:00:00+00:00">2018-07-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-25 15:28:02" itemprop="dateModified" datetime="2020-07-25T15:28:02+00:00">2020-07-25</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="开始了"><a href="#开始了" class="headerlink" title="开始了"></a>开始了</h2><p>费了半天劲，安装了一堆杂七杂八的东西，终于把我这博客简单地建好了，<del>虽然我觉得没人会看到这段文字就是了</del></p>
-<p>其实也没啥要说的，我希望我能勤奋地更新这并不会有人看的寒酸的Blog吧（苦笑）</p>
-<p>附上镇楼图：</p>
-<p><img data-src="/logo.svg" alt="MyFace"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
   
 
 
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -786,6 +390,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境"><span class="nav-number">1.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例"><span class="nav-number">2.</span> <span class="nav-text">实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#目标"><span class="nav-number">2.1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案"><span class="nav-number">2.2.</span> <span class="nav-text">解决方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#依赖作用域-dependency-scope"><span class="nav-number">3.</span> <span class="nav-text">依赖作用域 | dependency scope</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -942,6 +547,25 @@ if (document.querySelectorAll('pre.mermaid').length) {
 
   
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '621a6920bae5bb42ddec',
+      clientSecret: '44f921ae2f89d9b334051bc89bd1cc653e554335',
+      repo        : 'LonelySteve.github.io',
+      owner       : 'LonelySteve',
+      admin       : ['LonelySteve'],
+      id          : '3d6adf03c103e612d0781f76e0265eb0',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
 </body>
 </html>
