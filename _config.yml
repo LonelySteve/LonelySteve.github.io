@@ -43,16 +43,16 @@ highlight:
   line_number: true
   auto_detect: false
   tab_replace:
-  
+
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
 # per_page: Posts displayed per page. (0 = disable pagination)
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
-  path: ''
+  path: ""
   per_page: 10
   order_by: -date
-  
+
 # Category & Tag
 default_category: uncategorized
 category_map:
@@ -76,7 +76,6 @@ pagination_dir: page
 theme: next
 
 theme_config:
-
   # ---------------------------------------------------------------
   # Theme Core Configuration Settings
   # See: https://theme-next.org/docs/theme-settings/
@@ -111,7 +110,6 @@ theme_config:
     #variable: source/_data/variables.styl
     #mixin: source/_data/mixins.styl
     #style: source/_data/styles.styl
-
 
   # ---------------------------------------------------------------
   # Site Information Settings
@@ -170,7 +168,6 @@ theme_config:
     post: true
     language:
 
-
   # ---------------------------------------------------------------
   # Scheme Settings
   # ---------------------------------------------------------------
@@ -183,7 +180,6 @@ theme_config:
 
   # Dark Mode
   darkmode: true
-
 
   # ---------------------------------------------------------------
   # Menu Settings
@@ -208,7 +204,6 @@ theme_config:
   menu_settings:
     icons: true
     badges: false
-
 
   # ---------------------------------------------------------------
   # Sidebar Settings
@@ -257,7 +252,7 @@ theme_config:
   # Value before `||` delimiter is the target permalink, value after `||` delimiter is the name of Font Awesome icon.
   social:
     GitHub: https://github.com/LonelySteve || fab fa-github
-    E-Mail: mailto:jianglufull@foxmail.com || fa fa-envelope
+    E-Mail: mailto:LonelySteve227@outlook.com || fa fa-envelope
     #Weibo: https://weibo.com/yourname || fab fa-weibo
     #Google: https://plus.google.com/yourname || fab fa-google
     #Twitter: https://twitter.com/yourname || fab fa-twitter
@@ -303,7 +298,6 @@ theme_config:
     #service: tidio
     icon: fa fa-comment # Icon name in Font Awesome, set false to disable icon.
     text: Chat # Button text, change it as you wish.
-
 
   # ---------------------------------------------------------------
   # Post Settings
@@ -382,7 +376,6 @@ theme_config:
   # Available values: left | right | false
   post_navigation: left
 
-
   # ---------------------------------------------------------------
   # Custom Page Settings
   # See: https://theme-next.org/docs/theme-settings/custom-pages
@@ -408,7 +401,6 @@ theme_config:
     showDeleted: false
     singleEvents: true
     maxResults: 250
-
 
   # ---------------------------------------------------------------
   # Misc Theme Settings
@@ -472,7 +464,6 @@ theme_config:
     permalink: https://github.com/LonelySteve
     title: 在 GitHub 上关注我
 
-
   # ---------------------------------------------------------------
   # Font Settings
   # See: https://theme-next.org/docs/theme-settings/#Fonts-Customization
@@ -525,7 +516,6 @@ theme_config:
       external: true
       family:
 
-
   # ---------------------------------------------------------------
   # SEO Settings
   # ---------------------------------------------------------------
@@ -558,7 +548,6 @@ theme_config:
 
   # Enable baidu push so that the blog will push the url to baidu automatically which is very helpful for SEO.
   baidu_push: true
-
 
   # ---------------------------------------------------------------
   # Third Party Plugins & Services Settings
@@ -632,7 +621,6 @@ theme_config:
     # For more flexibility you can add some patterns (RegExp, Function, or Array) to ignores.
     # See: https://github.com/GoogleChromeLabs/quicklink#custom-ignore-patterns
     ignores:
-
 
   # ---------------------------------------------------------------
   # Comments Settings
@@ -722,8 +710,7 @@ theme_config:
     # Gitalk's display language depends on user's browser or system environment
     # If you want everyone visiting your site to see a uniform language, you can set a force language value
     # Available values: en | es-ES | fr | ru | zh-CN | zh-TW
-    language: zh-CN 
-
+    language: zh-CN
 
   # ---------------------------------------------------------------
   # Post Widgets & Content Sharing Services
@@ -734,13 +721,12 @@ theme_config:
   # To get your ID visit https://widgetpack.com
   rating:
     enable: false
-    id:     # <app_id>
-    color:  fc6423
+    id: # <app_id>
+    color: fc6423
 
   # AddThis Share. See: https://www.addthis.com
   # Go to https://www.addthis.com/dashboard to customize your tools.
   add_this_id:
-
 
   # ---------------------------------------------------------------
   # Statistics and Analytics
@@ -798,7 +784,6 @@ theme_config:
     post_views: true
     post_views_icon: fa fa-eye
 
-
   # ---------------------------------------------------------------
   # Search Services
   # See: https://theme-next.org/docs/third-party-services/search-services
@@ -832,7 +817,6 @@ theme_config:
   # Swiftype Search API Key
   swiftype_key:
 
-
   # ---------------------------------------------------------------
   # Chat Services
   # See: https://theme-next.org/docs/third-party-services/chat-services
@@ -853,7 +837,6 @@ theme_config:
   tidio:
     enable: false
     key: # Public Key, get it from dashboard. See: https://www.tidiochat.com/panel/settings/developer
-
 
   # ---------------------------------------------------------------
   # Tags Settings
@@ -893,7 +876,6 @@ theme_config:
     enable: true
     # Available themes: default | dark | forest | neutral
     theme: dark
-
 
   # ---------------------------------------------------------------
   # Animation Settings
@@ -945,7 +927,6 @@ theme_config:
     size: 300 # The width of the ribbon
     alpha: 0.6 # The transparency of the ribbon
     zIndex: -1 # The display level of the ribbon
-
 
   #! ---------------------------------------------------------------
   #! DO NOT EDIT THE FOLLOWING SETTINGS
@@ -1083,11 +1064,9 @@ sitemap:
   tags: true
   categories: true
 
-
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
- type: git
- # https://github.com/sma11black/hexo-action/issues/5#issuecomment-641344959
- repo: git@github.com:LonelySteve/LonelySteve.github.io.git
- 
+  type: git
+  # https://github.com/sma11black/hexo-action/issues/5#issuecomment-641344959
+  repo: git@github.com:LonelySteve/LonelySteve.github.io.git
