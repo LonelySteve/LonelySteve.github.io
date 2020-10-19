@@ -5,8 +5,6 @@ tags:
 date: 2020-10-20 01:03:28
 ---
 
-<!-- more -->
-
 ## 前言
 
 这是参见 [javascript-questions](https://github.com/lydiahallie/javascript-questions/blob/master/zh-CN/README-zh_CN.md) 库做出的一些笔记，记录一下 js 中一些奇奇怪怪的现象和注意事项~
