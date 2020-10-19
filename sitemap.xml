@@ -2,58 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.jloeve.top/tags/index.html</loc>
+    
+    <lastmod>2020-10-19T17:08:47.072Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.jloeve.top/2018/07/29/2018-07-29-Requests-toolbelt/</loc>
     
-    <lastmod>2020-10-19T17:05:45.303Z</lastmod>
+    <lastmod>2020-10-19T17:08:47.068Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.jloeve.top/2020/07/25/specifying-third-party-libraries-in-a-tomcat-web-project-developed-with-idea/</loc>
     
-    <lastmod>2020-10-19T17:05:45.303Z</lastmod>
+    <lastmod>2020-10-19T17:08:47.068Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.jloeve.top/2020/10/20/wtf-javascript-01/</loc>
     
-    <lastmod>2020-10-19T17:05:45.303Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.jloeve.top/tags/index.html</loc>
-    
-    <lastmod>2020-10-19T17:05:45.303Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.jloeve.top/2018/07/24/2018-07-24-introducing-my-blog/</loc>
-    
-    <lastmod>2020-10-19T17:05:45.295Z</lastmod>
+    <lastmod>2020-10-19T17:08:47.068Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.jloeve.top/2018/07/24/2018-07-24-CSharp-cross-threading-security-controls/</loc>
     
-    <lastmod>2020-10-19T17:05:45.295Z</lastmod>
+    <lastmod>2020-10-19T17:08:47.056Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.jloeve.top/2018/07/24/2018-07-24-introducing-my-blog/</loc>
+    
+    <lastmod>2020-10-19T17:08:47.056Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.jloeve.top/2018/07/28/2018-07-28-China-telecom-e-pon-robooter/</loc>
     
-    <lastmod>2020-10-19T17:05:45.295Z</lastmod>
+    <lastmod>2020-10-19T17:08:47.056Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.jloeve.top/2018/07/24/2018-07-24-CSharp-GDI-plus-about-capcha/</loc>
     
-    <lastmod>2020-10-19T17:05:45.287Z</lastmod>
+    <lastmod>2020-10-19T17:08:47.048Z</lastmod>
     
   </url>
   

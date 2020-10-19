@@ -24,18 +24,18 @@
     var CONFIG = {"hostname":"blog.jloeve.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"这里有关「${query}」的知识空空如也~","hits_stats":"在 ${time} ms 里找到了 ${hits} 个结果"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="前言这是参见 javascript-questions 库做出的一些笔记，记录一下 js 中一些奇奇怪怪的现象和注意事项~ 本篇主题有：  IIFE 令人迷惑的 new 浏览器事件知识   IIFE 关联至问题 2  题目给出了两个相似的 for 循环，它们唯一的区别就是循环变量的声明方法，一个是使用的是 var 关键字，而另外一个使用的是 ES6 中新增的 let 关键字。在两个循环的循环体内">
+  <meta name="description" content="前言这是参见 javascript-questions 库做出的一些笔记，记录一下 js 中一些奇奇怪怪的现象和注意事项~ 本篇主题有：  IIFE 令人迷惑的 new 浏览器事件知识">
 <meta name="keywords" content="javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="wtf-javascript-01">
 <meta property="og:url" content="https://blog.jloeve.top/2020/10/20/wtf-javascript-01/index.html">
 <meta property="og:site_name" content="JLoeve 的个人博客">
-<meta property="og:description" content="前言这是参见 javascript-questions 库做出的一些笔记，记录一下 js 中一些奇奇怪怪的现象和注意事项~ 本篇主题有：  IIFE 令人迷惑的 new 浏览器事件知识   IIFE 关联至问题 2  题目给出了两个相似的 for 循环，它们唯一的区别就是循环变量的声明方法，一个是使用的是 var 关键字，而另外一个使用的是 ES6 中新增的 let 关键字。在两个循环的循环体内">
+<meta property="og:description" content="前言这是参见 javascript-questions 库做出的一些笔记，记录一下 js 中一些奇奇怪怪的现象和注意事项~ 本篇主题有：  IIFE 令人迷惑的 new 浏览器事件知识">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-10-19T17:05:45.303Z">
+<meta property="og:updated_time" content="2020-10-19T17:08:47.068Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="wtf-javascript-01">
-<meta name="twitter:description" content="前言这是参见 javascript-questions 库做出的一些笔记，记录一下 js 中一些奇奇怪怪的现象和注意事项~ 本篇主题有：  IIFE 令人迷惑的 new 浏览器事件知识   IIFE 关联至问题 2  题目给出了两个相似的 for 循环，它们唯一的区别就是循环变量的声明方法，一个是使用的是 var 关键字，而另外一个使用的是 ES6 中新增的 let 关键字。在两个循环的循环体内">
+<meta name="twitter:description" content="前言这是参见 javascript-questions 库做出的一些笔记，记录一下 js 中一些奇奇怪怪的现象和注意事项~ 本篇主题有：  IIFE 令人迷惑的 new 浏览器事件知识">
 
 <link rel="canonical" href="https://blog.jloeve.top/2020/10/20/wtf-javascript-01/">
 
@@ -197,7 +197,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-19 17:05:45" itemprop="dateModified" datetime="2020-10-19T17:05:45+00:00">2020-10-19</time>
+                <time title="修改时间：2020-10-19 17:08:47" itemprop="dateModified" datetime="2020-10-19T17:08:47+00:00">2020-10-19</time>
               </span>
 
           
@@ -218,15 +218,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <a id="more"></a>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这是参见 <a href="https://github.com/lydiahallie/javascript-questions/blob/master/zh-CN/README-zh_CN.md" target="_blank" rel="noopener">javascript-questions</a> 库做出的一些笔记，记录一下 js 中一些奇奇怪怪的现象和注意事项~</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这是参见 <a href="https://github.com/lydiahallie/javascript-questions/blob/master/zh-CN/README-zh_CN.md" target="_blank" rel="noopener">javascript-questions</a> 库做出的一些笔记，记录一下 js 中一些奇奇怪怪的现象和注意事项~</p>
 <p>本篇主题有：</p>
 <ul>
 <li>IIFE</li>
 <li>令人迷惑的 new</li>
 <li>浏览器事件知识</li>
 </ul>
-<!-- more -->
+<a id="more"></a>
 <h2 id="IIFE"><a href="#IIFE" class="headerlink" title="IIFE"></a>IIFE</h2><blockquote>
 <p>关联至<a href="https://github.com/lydiahallie/javascript-questions/blob/master/zh-CN/README-zh_CN.md#2-%E8%BE%93%E5%87%BA%E6%98%AF%E4%BB%80%E4%B9%88" target="_blank" rel="noopener">问题 2</a></p>
 </blockquote>

@@ -196,7 +196,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-19 17:05:45" itemprop="dateModified" datetime="2020-10-19T17:05:45+00:00">2020-10-19</time>
+                <time title="修改时间：2020-10-19 17:08:47" itemprop="dateModified" datetime="2020-10-19T17:08:47+00:00">2020-10-19</time>
               </span>
 
           
@@ -210,66 +210,21 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <a id="more"></a>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这是参见 <a href="https://github.com/lydiahallie/javascript-questions/blob/master/zh-CN/README-zh_CN.md" target="_blank" rel="noopener">javascript-questions</a> 库做出的一些笔记，记录一下 js 中一些奇奇怪怪的现象和注意事项~</p>
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这是参见 <a href="https://github.com/lydiahallie/javascript-questions/blob/master/zh-CN/README-zh_CN.md" target="_blank" rel="noopener">javascript-questions</a> 库做出的一些笔记，记录一下 js 中一些奇奇怪怪的现象和注意事项~</p>
 <p>本篇主题有：</p>
 <ul>
 <li>IIFE</li>
 <li>令人迷惑的 new</li>
 <li>浏览器事件知识</li>
 </ul>
-<!-- more -->
-<h2 id="IIFE"><a href="#IIFE" class="headerlink" title="IIFE"></a>IIFE</h2><blockquote>
-<p>关联至<a href="https://github.com/lydiahallie/javascript-questions/blob/master/zh-CN/README-zh_CN.md#2-%E8%BE%93%E5%87%BA%E6%98%AF%E4%BB%80%E4%B9%88" target="_blank" rel="noopener">问题 2</a></p>
-</blockquote>
-<p>题目给出了两个相似的 for 循环，它们唯一的区别就是循环变量的声明方法，一个是使用的是 <code>var</code> 关键字，而另外一个使用的是 ES6 中新增的 <code>let</code> 关键字。在两个循环的循环体内都是使用 <code>setTimeout</code> 方法在延迟一段同一段长度的时间后将循环变量 <code>i</code> 打印到控制台。</p>
-<p>奇怪的是，使用 <code>var</code> 声明循环变量的那个循环最终会输出 ‘3’ 三次，而使用 <code>let</code> 声明循环变量会按照我们的期望输出 ‘1’, ‘2’, ‘3’。</p>
-<p>这主要是因为两种变量声明方式不同导致的差异：</p>
-<ul>
-<li><code>var</code> 这种声明方式会使变量提升，并且分配内存空间，放在这个<a href="https://github.com/lydiahallie/javascript-questions/blob/master/zh-CN/README-zh_CN.md#2-%E8%BE%93%E5%87%BA%E6%98%AF%E4%BB%80%E4%B9%88" target="_blank" rel="noopener">问题 2</a>中，在 for 循环执行之后访问循环变量 <code>i</code>，由于这个变量已经成为全局变量了，并且哪怕将这个定时器的延迟设置为 0，<code>setTimeout</code> 的回调也始终会在循环执行完成之后再执行，因此回调执行时，访问到的循环变量 <code>i</code> 的值已经是 3 了。</li>
-<li><p><code>let</code> 则会绑定到块级作用域，也就是 for 循环的循环体，每次循环都会将 <code>i</code> 的新值绑定到循环体，这么说可能不是很让人明白，但是经过试验可以证明这个绑定仅仅是浅拷贝而已，不过对于基本数据类型还是会发生真正意义上的拷贝，下面补充这个例子证明了这一点：</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> l = [];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> a = &#123; <span class="attr">i</span>: <span class="number">0</span> &#125;; a.i &lt; <span class="number">3</span>; a.i++) &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> l.push(a), <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(l[<span class="number">0</span>] === l[<span class="number">1</span>] &amp;&amp; l[<span class="number">1</span>] === l[<span class="number">2</span>]); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>这个问题体现出 ES6 中 <code>let</code> 关键字与 <code>var</code> 关键字声明变量的差异，但是在 ES6 之前，JS 程序员该如何实现或模拟块级作用域绑定呢？答案就是 IIFE（立即调用函数表达式）：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">    (<span class="function">(<span class="params">j</span>) =&gt;</span> setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(j)))(i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output: 1 2 3</span></span><br></pre></td></tr></table></figure>
-<p>上面代码片段中的匿名函数拥有独立的作用域，参数 <code>j</code> 是每轮遍历变量 <code>i</code> 值的一份拷贝，因此执行结果和<a href="https://github.com/lydiahallie/javascript-questions/blob/master/zh-CN/README-zh_CN.md#2-%E8%BE%93%E5%87%BA%E6%98%AF%E4%BB%80%E4%B9%88" target="_blank" rel="noopener">问题 2</a>中使用 ES6 的 <code>let</code> 关键字来声明循环变量的情形一致。</p>
-<h2 id="令人迷惑的-new"><a href="#令人迷惑的-new" class="headerlink" title="令人迷惑的 new"></a>令人迷惑的 new</h2><blockquote>
-<p>关联至<a href="https://github.com/lydiahallie/javascript-questions/blob/master/zh-CN/README-zh_CN.md#12-%E8%BE%93%E5%87%BA%E6%98%AF%E4%BB%80%E4%B9%88" target="_blank" rel="noopener">问题 12</a></p>
-</blockquote>
-<p>这个问题定义了一个函数，并在函数内部使用了 <code>this</code> 关键字。最关键的在于下方「调用」了两次这个函数，最重要的区别在于一个在调用之前使用了 <code>new</code> 关键字，而另外一个没有使用。</p>
-<p>如果有一定的 JS 基础，对 <code>this</code> 关键字比较了解的话，很容易意识到，在<strong>没有</strong>使用 <code>new</code> 关键字的调用中，<code>this</code> 就会指向上一级对象，在这里就是全局对象，因此赋值过程并不会有任何问题，但是执行结果（返回值）是什么呢？</p>
-<p>或许是因为这两种相似的用法摆在了一起，再加上受 Python 的实例化对象的语法的影响，我错误地认为返回值是 <code>{}</code>，也就是一个空对象，但事实上这个没有使用 <code>new</code> 关键字的调用就是普通的函数调用，因为这个函数没有显式返回任何值，因此返回值就是 <code>undefined</code>！</p>
-<blockquote>
-<p>如果读者没有学习过 Python，或许就不会在这道问题上出错……在 Python 中无需使用 <code>new</code> 关键字，直接调用类构造器即可实例化一个相应的对象。</p>
-</blockquote>
-<p>在使用了 <code>new</code> 关键字的调用中，<code>this</code> 就是指向新创建的空对象的，而所被调用的函数也摇身一变被称为「构造函数」，无论「构造函数」中是否返回值，实例化对象之后的返回值一定是这个创建对象的引用。在 ES6 之前，定义构造函数的写法就是如<a href="https://github.com/lydiahallie/javascript-questions/blob/master/zh-CN/README-zh_CN.md#12-%E8%BE%93%E5%87%BA%E6%98%AF%E4%BB%80%E4%B9%88" target="_blank" rel="noopener">问题 12</a>中这般简单，不得不让 C 系程序员感到十分新奇。而在 ES6 之后，也引入了 <code>class</code> 关键字，提供了其它面向对象语言类似的语法来定义类。</p>
-<h3 id="new-target"><a href="#new-target" class="headerlink" title="new.target"></a>new.target</h3><p><code>new.target</code> 属性允许你检测函数或构造方法是否是通过 <code>new</code> 运算符被调用的。</p>
-<ul>
-<li>在通过 <code>new</code> 运算符被初始化的函数或构造方法中，<code>new.target</code> 返回一个指向构造方法或函数的引用。</li>
-<li>在普通的函数调用中，<code>new.target</code> 的值是 <code>undefined</code>。</li>
-</ul>
-<p>嗯，这是 MDN 上关于 <code>new.target</code> 的介绍，但是转念一想，这些功能基本可以通过 <code>this</code> 关键字来实现嘛，这又是 ES6 搞出的语法糖？不过由于这个语法的设计初衷就是为了判断构造方法是否是通过 <code>new</code> 运算符调用的，因此如果想要在继承后的子类的构造函数中的 <code>super()</code> 调用之前即执行相关判断会变得相当有用：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">new</span>.target) <span class="comment">// Child!</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span> <span class="keyword">extends</span> <span class="title">Parent</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>() &#123;</span><br><span class="line">        <span class="comment">// console.log(this);  // 这里不能使用 this，会报错</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">new</span>.target) <span class="comment">// 这里可以正常使用，Child!</span></span><br><span class="line">        <span class="keyword">super</span>(); <span class="comment">// this = Reflect.construct(Parent, [], new.target);</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">new</span> Child;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><code>new.target</code> 不能在构造函数或普通函数的外部使用</p>
-</blockquote>
-<h2 id="浏览器事件知识"><a href="#浏览器事件知识" class="headerlink" title="浏览器事件知识"></a>浏览器事件知识</h2><blockquote>
-<p>关联至<a href="https://github.com/lydiahallie/javascript-questions/blob/master/zh-CN/README-zh_CN.md#13-%E4%BA%8B%E4%BB%B6%E4%BC%A0%E6%92%AD%E7%9A%84%E4%B8%89%E4%B8%AA%E9%98%B6%E6%AE%B5%E6%98%AF%E4%BB%80%E4%B9%88" target="_blank" rel="noopener">问题 13</a></p>
-</blockquote>
-<p>当一个事件发生在具有父元素的元素上（例如，在我们的例子中是&lt;video&gt;元素）时，现代浏览器运行两个不同的阶段 - 捕获阶段和冒泡阶段。 在捕获阶段：</p>
-<ul>
-<li>浏览器检查元素的最外层祖先&lt;html&gt;，是否在捕获阶段中注册了一个onclick事件处理程序，如果是，则运行它。</li>
-<li>然后，它移动到&lt;html&gt;中单击元素的下一个祖先元素，并执行相同的操作，然后是单击元素再下一个祖先元素，依此类推，直到到达实际点击的元素。</li>
-</ul>
-<p>在冒泡阶段，恰恰相反:</p>
-<ul>
-<li>浏览器检查实际点击的元素是否在冒泡阶段中注册了一个onclick事件处理程序，如果是，则运行它</li>
-<li>然后它移动到下一个直接的祖先元素，并做同样的事情，然后是下一个，等等，直到它到达&lt;html&gt;元素。</li>
-</ul>
-<p><img data-src="https://mdn.mozillademos.org/files/14075/bubbling-capturing.png" alt="冒泡和捕获"></p>
-<!-- 问题引用 -->
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/10/20/wtf-javascript-01/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -319,7 +274,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-19 17:05:45" itemprop="dateModified" datetime="2020-10-19T17:05:45+00:00">2020-10-19</time>
+                <time title="修改时间：2020-10-19 17:08:47" itemprop="dateModified" datetime="2020-10-19T17:08:47+00:00">2020-10-19</time>
               </span>
 
           
@@ -391,7 +346,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-19 17:05:45" itemprop="dateModified" datetime="2020-10-19T17:05:45+00:00">2020-10-19</time>
+                <time title="修改时间：2020-10-19 17:08:47" itemprop="dateModified" datetime="2020-10-19T17:08:47+00:00">2020-10-19</time>
               </span>
 
           
@@ -465,7 +420,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-19 17:05:45" itemprop="dateModified" datetime="2020-10-19T17:05:45+00:00">2020-10-19</time>
+                <time title="修改时间：2020-10-19 17:08:47" itemprop="dateModified" datetime="2020-10-19T17:08:47+00:00">2020-10-19</time>
               </span>
 
           
@@ -537,7 +492,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-19 17:05:45" itemprop="dateModified" datetime="2020-10-19T17:05:45+00:00">2020-10-19</time>
+                <time title="修改时间：2020-10-19 17:08:47" itemprop="dateModified" datetime="2020-10-19T17:08:47+00:00">2020-10-19</time>
               </span>
 
           
@@ -611,7 +566,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-19 17:05:45" itemprop="dateModified" datetime="2020-10-19T17:05:45+00:00">2020-10-19</time>
+                <time title="修改时间：2020-10-19 17:08:47" itemprop="dateModified" datetime="2020-10-19T17:08:47+00:00">2020-10-19</time>
               </span>
 
           
@@ -686,7 +641,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-19 17:05:45" itemprop="dateModified" datetime="2020-10-19T17:05:45+00:00">2020-10-19</time>
+                <time title="修改时间：2020-10-19 17:08:47" itemprop="dateModified" datetime="2020-10-19T17:08:47+00:00">2020-10-19</time>
               </span>
 
           
@@ -760,7 +715,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-19 17:05:45" itemprop="dateModified" datetime="2020-10-19T17:05:45+00:00">2020-10-19</time>
+                <time title="修改时间：2020-10-19 17:08:47" itemprop="dateModified" datetime="2020-10-19T17:08:47+00:00">2020-10-19</time>
               </span>
 
           
